@@ -1,5 +1,6 @@
 // https://blog.csdn.net/u012102306/article/details/53184446
 // 动态规划 c[i][j] = 0 (i=0 or j=0)
+// c[i][j]表示str1,str2分别以i,j结尾的最长公共子串
 // c[i][j] = c[i-1,j-1]+1 (xi=yj)
 // c[i][j] = 0 (xi!=yj)
 int dp[1000][1000];

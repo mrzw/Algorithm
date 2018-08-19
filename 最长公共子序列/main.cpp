@@ -1,4 +1,5 @@
 // https://blog.csdn.net/u012102306/article/details/53184446
+// c[i][j]表示str1,str2分别以i,j结尾的最长公共子序列
 // c[i,j] = 0 (i=0 or j=0)
 // c[i,j] = c[i-1,j-1]+1 (xi=yj)
 // c[i,j] = max(c[i,j-1],c[i-1,j]) (xi!=yj)

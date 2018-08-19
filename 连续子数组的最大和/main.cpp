@@ -1,18 +1,20 @@
-
-// 动态规划 递推公式是DP[i] = max{DP[i-1] + A[i],A[i]}
-int maxSubArray(int A[], int n) {
-    int curSum = 0;
-    int maxSum = A[0];
-    for(int j = 0; j < n; j++) {
-        if(curSum >= 0)  {
-            curSum += A[j];
+class Solution {
+public:
+	// 以array[i]为尾的子数组的最大和 tmp[i] = max(tmp[i-1]+array[i], array[i])
+    int FindGreatestSumOfSubArray(vector<int> array) {
+        int len = array.size();
+        vector<int> tmp(len); // tmp[i]记录以array[i]为尾的子数组的最大和
+        tmp[0] = array[0];
+        int maxData = array[0];
+        for(int i=1; i<len; ++i) {
+            if(tmp[i-1]<=0) {
+                tmp[i] = array[i];
+            } else {
+                tmp[i] = tmp[i-1]+array[i];
+            }
+            if(tmp[i]>maxData)
+                maxData = tmp[i];
         }
-        else {
-            curSum = A[j];
-        }
-        if(curSum > maxSum) {
-            maxSum = curSum;
-        }
+        return maxData;
     }
-    return maxSum;
-}
+};
