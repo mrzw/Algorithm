@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+// https://www.jianshu.com/p/fc17847b0a31
 // 并查集，可以判断有多少个连通分量
 int pre[1000];  //记录每个节点的前导点是什么
 
@@ -7,21 +8,14 @@ int pre[1000];  //记录每个节点的前导点是什么
 //查找x的根节点
 int find(int x)
 {
-    while(pre[x]!=x)
-        x = pre[x];
-    return x;
+    return x==pre[x]?x:(pre[x]=find(pre[x])); // 路径压缩
+//    return x==pre[x]?x:(find(pre[x])); // 非压缩
 }
 
 //判断x和y是否连通
 void join(int x, int y)
 {
-    int fx = find(x);
-    int fy = find(y);
-    //如果不连通，就把他们所在的连通分支合并起来
-    if(fx != fy)
-    {
-        pre[fx] = fy;
-    }
+    pre[find(x)] = pre[find(y)];
 }
 
 //初始化（每个元素都是一个集合）
@@ -40,7 +34,7 @@ void init(int n)
  */
 int main()
 {
-    // n组测试，每组m个连接,判断最后有几个连通图
+    // n个结点，m个连接,判断最后有几个连通图
     int n,m,a,b;
     while(cin>>n)
     {
