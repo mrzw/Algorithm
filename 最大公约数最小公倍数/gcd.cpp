@@ -18,6 +18,10 @@ int gcd(int a, int b) {  // 求a和b的最大公约数
 	}
 	return a;
 }
+int gcd(int a, int b) { // 默认a>b
+	if(b==0) return a;
+	gcd(b,a%b));
+}
 int lcm(int a, int b) {   // 求a和b的最小公倍数 = a*b/最大公约数
 	int gongyueshu = gcd(a, b);
 	return a*b/gongyueshu;
