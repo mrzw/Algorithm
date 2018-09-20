@@ -3,7 +3,7 @@
 #include <memory.h> // 使用memset函数
 using namespace std;
 
-int a[100000]={0}; //100位长度的大数
+int a[100000]={0};
 
 int computeFact(int n) //返回大数的位数
 {
