@@ -109,31 +109,23 @@ void postOrder1(TreeNode* root) {
     }
 }
 // 水平遍历，分层打印
-int levelOrder1(TreeNode* root) {
+void levelOrder1(TreeNode* root) {
     if(root==NULL) return 0;
     int count = 0;
     queue<TreeNode*> qu;
     qu.push(root);
-    qu.push(NULL);
     while(!qu.empty()) {
-        TreeNode *tmp = qu.front();
-        qu.pop();
-        if(tmp == NULL)
-        {
-            count++;
-            if(!qu.empty()) {
-                qu.push(NULL);
-                cout<<endl;
-            } else break;
-        }
-        else
-        {
-            cout << tmp->val << " ";
-            if(tmp->left) qu.push(tmp->left);
-            if(tmp->right) qu.push(tmp->right);
-        }
+    	int size = qu.size();
+    	while(size>0) {
+    		TreeNode *tmp = qu.front();
+        	qu.pop_front();
+        	--size;
+        	cout << tmp->val << " ";
+        	if(tmp->left) qu.push(tmp->left);
+            if(tmp->right) qu.push(tmp->right); 
+    	}
+    	cout << endl;
     }
-    return count;
 }
 // 水平遍历
 void levelOrder(TreeNode* root) {
